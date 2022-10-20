@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from snippets.formatter import Formatter
 from snippets.models import Snippet
+from snippets.models import Language
 from django.template import loader
 
 

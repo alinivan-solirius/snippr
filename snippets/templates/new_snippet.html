@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+ <section>
+   <div class="container-md" style="max-width: 1200px; text-align:center;">
+      <h3 style="padding:20px;">Add new snippet</h3>
+      <form method="POST" style="display:block;">
+
+          {% csrf_token %}
+          {{ snippet_form }}
+
+          <input type="submit" value="Save snippet" class="btn btn-primary"/>
+      </form>
+   </div>
+ </section>
+{% endblock %}
+
+<!--
+<div class="form-group" style="padding:5px; text-align:left;">
+          <label for="title"><strong>Snippet title</strong></label>
+          <input type="text" class="form-control" id="title" placeholder="Title..">
+        </div>
+        <div class="form-group" style="padding:5px;text-align:left;">
+          <label for="language"><strong>Programming language</strong></label>
+          <select class="form-control" id="language" >
+              <option value="" selected disabled hidden style="color:gray;">Select language..</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>Python, Java, JavaScript</option>
+          </select>
+        </div>
+        <div class="form-group" style="padding:5px;text-align:left;">
+          <label for="code"><strong>Snippet code</strong></label>
+          <textarea class="form-control" id="code" rows="20"></textarea>
+        </div>
+-->

@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from snippets.views import base
+from snippets.views import home, add_snippet
 
 
 urlpatterns = [
-    path('', base),
+    path('', home),
+    path('add_snippet', add_snippet),
 ]

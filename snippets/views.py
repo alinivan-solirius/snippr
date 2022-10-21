@@ -32,3 +32,15 @@ def add_snippet(request):
     return render(request, 'new_snippet.html', {
         "snippet_form": snippet_form
     })
+
+
+def edit_snippet(request, snippet_id=None):
+    snippet = Snippet.objects.get(id=snippet_id)
+    if request.method == "POST":
+        snippet_form = SnippetForm(request.POST, instance=snippet)
+        snippet_form.save()
+    else:
+        snippet_form = SnippetForm(instance=snippet)
+    return render(request, 'edit_snippet.html', {
+        "snippet_form": snippet_form
+    })

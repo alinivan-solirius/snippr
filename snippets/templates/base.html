@@ -27,9 +27,10 @@
             </li>
           </ul>
 
-              <form class="d-flex" role="search" style="text-align: center;">
-            <input class="form-control me-2" type="search" placeholder="Search snippets or language..." aria-label="Search" style="min-width:350px;" >
-            <button class="btn btn-outline-success" type="submit">Search</button>
+              <form action="{% url 'snippets:search' %}" method="GET" value="{{request.GET.q}}" class="d-flex" role="search" style="text-align: center;">
+                        {% csrf_token %}
+            <input class="form-control me-2" type="search" name='q' value="{{request.GET.q}}"  placeholder="Search snippets or language..." aria-label="Search" style="min-width:350px;" >
+            <input class="btn btn-outline-success" type="submit" ></input>
           </form>
 
         </div>

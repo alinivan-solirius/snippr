@@ -38,14 +38,18 @@ def add_snippet(request):
 
 def edit_snippet(request, snippet_id=None):
     snippet = Snippet.objects.get(id=snippet_id)
+    languages = Language.objects.all()
+
     if request.method == "POST":
         snippet_form = SnippetForm(request.POST, instance=snippet)
         snippet_form.save()
         return redirect('snippets:home')
     else:
+        print(languages)
         snippet_form = SnippetForm(instance=snippet)
     return render(request, 'edit_snippet.html', {
-        "snippet_form": snippet_form
+        "snippet_form": snippet_form,
+        "languages": languages
     })
 
 

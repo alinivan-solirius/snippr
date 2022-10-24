@@ -14,7 +14,16 @@
             </div>
             <div class="form-group" style="padding:5px;text-align:left;">
               <label><strong>Programming language</strong></label>
-                {{ snippet_form.language | add_class:'form-control'}}
+
+                 <select class="form-control">
+                    {% for lang in languages %}
+                       <option value={{lang}}
+                           {% if lang.title == snippet_form.language.title %} selected>{% endif %}>
+                           {{ lang.title }}
+                       </option>
+                    {% endfor %}
+                </select>
+
             </div>
             <div class="form-group" style="padding:5px;text-align:left;">
               <label><strong>Snippet code</strong></label>

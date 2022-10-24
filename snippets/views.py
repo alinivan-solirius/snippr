@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 
 from snippets.formatter import Formatter
 from snippets.models import Snippet
+from django.db.models import Q
 from snippets.models import Language
 from django.template import loader
 from snippets.forms import SnippetForm
@@ -54,4 +55,19 @@ def delete_snippet(request, snippet_id=None):
         snippet.delete()
     return render(request, 'delete_snippet.html', {
         "snippet": snippet
+    })
+
+
+def search(request):
+    q = request.GET.get('q')
+    snippets = Snippet.objects.all()
+    if q is not None:
+        snippets = Snippet.objects.filter(Q(title__icontains=q))
+    for snip in snippets:
+        code = Formatter(code=snip.description, lexer=snip.language.title.lower())
+        formatted_code = code.format_code()
+        if "Internal Server Error" not in formatted_code:
+            snip.description = formatted_code
+    return render(request, 'home.html', {
+        "snippets": snippets
     })

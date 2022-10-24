@@ -11,3 +11,8 @@ def add_class(value, arg):
 @register.filter(name='add_placeholder')
 def add_placeholder(value, arg):
     return value.as_widget(attrs={'placeholder': arg})
+
+
+@register.filter(name='add_value')
+def add_value(value, arg):
+    return value.as_widget(attrs={'value': arg})

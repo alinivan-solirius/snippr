@@ -1,0 +1,28 @@
+CREATE DATABASE snippr;
+use snippr;
+
+CREATE TABLE IF NOT EXISTS `snippr`.`snippets_language` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 9
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+
+CREATE TABLE IF NOT EXISTS `snippr`.`snippets_snippet` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(100) NOT NULL,
+  `language_id` BIGINT NOT NULL,
+  `description` LONGTEXT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `snippets_snippet_language_id_3627241d` (`language_id` ASC) VISIBLE,
+  CONSTRAINT `snippets_snippet_language_id_3627241d_fk_snippets_language_id`
+    FOREIGN KEY (`language_id`)
+    REFERENCES `snippr`.`snippets_language` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 26
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+
+

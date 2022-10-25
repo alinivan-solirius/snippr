@@ -71,7 +71,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'snippr.wsgi.application'
 
 
-# Database
+# MySQL_snippets_and_languages_ERD
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {

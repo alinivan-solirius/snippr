@@ -14,8 +14,15 @@
             </div>
             <div class="form-group" style="padding:5px;text-align:left;">
               <label><strong>Programming language</strong></label>
+                <select class="form-control" name="language" required id="id_language">
+                    <option value selected>---------</option>
+                    {% for lang in languages %}
+                       <option value={{lang.id}} required>
+                           {{ lang.title }}
+                       </option>
+                    {% endfor %}
+                </select>
 
-                {{ snippet_form.language | add_class:'form-control'}}
 
             </div>
             <div class="form-group" style="padding:5px;text-align:left;">

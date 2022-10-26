@@ -15,5 +15,5 @@ class Snippet(models.Model):
         related_name="language",
         on_delete=models.PROTECT
     )
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=10000)
 

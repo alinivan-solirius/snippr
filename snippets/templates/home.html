@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<main style="padding:10px;">
-
     <section>
     <div class="container-md" style="max-width: 1200px; text-align:center;">
-    <h3 style="padding:10px;">Snippets</h3>
+    <h1 style="padding:10px;">Snippets</h1>
        <div class="accordion accordion-flush" id="snippets_list" >
 
         {% for snip in snippets %}
@@ -14,7 +11,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading-{{ snip.id }}">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{ snip.id }}" aria-expanded="false" aria-controls="flush-collapse-{{ snip.id }}">
-                <strong style="padding:5px"> {{ snip.title }} </strong> <span style="padding: 5px; color: gray; border-color:#baeeaa; border: 1px solid #baeeaa; border-radius:10px; font-size: 0.7rem">{{ snip.language.title }}</span>
+                <strong style="padding:5px"> {{ snip.title }} </strong> <span style="padding: 5px; color: dark-gray; border-color:#baeeaa; border: 1px solid #baeeaa; border-radius:10px; font-size: 0.7rem">{{ snip.language.title }}</span>
               </button>
             </h2>
             <div id="flush-collapse-{{ snip.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{{ snip.id }}" data-bs-parent="#snippets_list">
@@ -33,7 +30,4 @@
         </div>
       </div>
       </section>
-
-  </main>
-
 {% endblock %}

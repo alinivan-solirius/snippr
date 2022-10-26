@@ -32,19 +32,19 @@ class SnippetTestCase(TestCase):
         assert b"React block of code" in res.content
 
     def test_snippets_created_using_form(self):
-        req = self.factory.get("add_snippet")
-        res = add_snippet(req)
+        Snippet.objects.create(
+            title='Another Django block of code',
+            language=Language.objects.create(title='Python'),
+            description="def python_function(): return None"
+        )
+        req = self.factory.get("", follow=True)
+        res = home(req)
         assert res.status_code == 200
-        self.factory.post("add_snippet", self.snippet_object)
-        home_res = self.client.get("", follow=True)
-        assert home_res.status_code == 200
-        assert b"Django block of code" in home_res.content
+        assert b"Another Django block of code" in res.content
 
-    def test_snippets_edited_using_form(self):
-        snippet_id = 1
-        req = self.factory.get("edit_snippet/" + str(snippet_id) + "/")
-        res = edit_snippet(req)
-        self.factory.post("edit_snippet", self.snippet_object)
-        home_res = home(self.factory.get(""))
-        assert home_res.status_code == 200
-        assert b"Django block of code" in home_res.content
+    def test_snippets_delete_with_confirmation(self):
+        self.factory.get("delete_snippet/1/")
+        self.factory.delete("edit_snippet/1/")
+        res = home(self.factory.get(""))
+        assert res.status_code == 200
+        assert b"Django block of code" in res.content

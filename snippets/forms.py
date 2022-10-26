@@ -1,10 +1,5 @@
-from django.forms import ModelForm, Select, Textarea, ModelMultipleChoiceField
+from django.forms import ModelForm, Select, Textarea, CharField
 from snippets.models import Snippet, Language
-
-
-# class CustomLanguageTitle(ModelMultipleChoiceField):
-#     def label_from_instance(self, language):
-#         return language
 
 
 # Create the form class.
@@ -14,10 +9,5 @@ class SnippetForm(ModelForm):
         fields = ['title', "language", 'description']
         widgets = {
             'language': Select(),
-            'description': Textarea(attrs={'rows': 30}),
+            'description': Textarea(attrs={'rows': 15, 'overflow-y': 'scroll', 'maxlength': 10000}),
         }
-
-    # language = CustomLanguageTitle(
-    #     queryset = Language.objects.all(),
-    #     widget = Select
-    # )

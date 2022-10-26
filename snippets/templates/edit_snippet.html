@@ -15,12 +15,14 @@
             <div class="form-group" style="padding:5px;text-align:left;">
               <label><strong>Programming language</strong></label>
 
-                 <select class="form-control">
+                 <select class="form-control" name="language" required id="id_lang">
+                    <option value>---------</option>
                     {% for lang in languages %}
-                       <option value={{lang}}
-                           {% if lang.title == snippet_form.language.title %} selected>{% endif %}>
+                       <option value={{lang.id}} required
+                           {% if snipp.language.id == lang.id %} selected {% endif %}>
                            {{ lang.title }}
                        </option>
+
                     {% endfor %}
                 </select>
 
